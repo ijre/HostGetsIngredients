@@ -1,1 +1,1 @@
-## Special thanks to HugoZink for their [PD2 Mod Autoupdater](https://github.com/HugoZink/PD2AutoUpdateExample)
+## Special thanks to HugoZink for their [PD2 Mod Autoupdater Example](https://github.com/HugoZink/PD2AutoUpdateExample)
