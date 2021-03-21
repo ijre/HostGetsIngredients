@@ -1,0 +1,27 @@
+{
+  "name": "Host Gets Ingredients",
+  "description": "Only the host gets meth ingredients",
+  "author": "ijre",
+  "hooks": [
+    {
+      "hook_id": "core/lib/system/coresystem",
+      "script_path": "main.lua"
+    },
+    {
+      "hook_id": "lib/network/handlers/unitnetworkhandler",
+      "script_path": "UnitNetwork.lua"
+    },
+    {
+      "hook_id": "lib/managers/playermanager",
+      "script_path": "PlayerManager.lua"
+    }
+  ],
+  "updates": [
+    {
+      "identifier": "HostGetsIngredients",
+      "host": {
+        "meta": "https://github.com/ijre/HostGetsIngredients/releases/download/HGI/meta.json"
+      }
+    }
+  ]
+}
