@@ -1,5 +1,3 @@
-dofile(ModPath .. "../PrintTableDeep/main.lua")
-
 HGI = { }
 HGI.ingredients =
 {
@@ -11,5 +9,5 @@ HGI.ingredients =
 HGI.custodyOverride = 0
 
 function HGI:IsIngredient(ingred, hostOnly)
-  return LuaNetworking:IsHost() and table.contains(self.ingredients, ingred) and (HGI.custodyOverride == 0 or not hostOnly)
+  return table.contains(self.ingredients, ingred) and LuaNetworking:IsHost() and (self.custodyOverride == 0 or not hostOnly)
 end
