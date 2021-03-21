@@ -5,7 +5,7 @@
   "hooks": [
     {
       "hook_id": "core/lib/system/coresystem",
-      "script_path": "main.lua"
+      "script_path": "HGI.lua"
     },
     {
       "hook_id": "lib/network/handlers/unitnetworkhandler",
@@ -14,6 +14,14 @@
     {
       "hook_id": "lib/managers/playermanager",
       "script_path": "PlayerManager.lua"
+    },
+    {
+      "hook_id": "lib/units/interactions/interactionext",
+      "script_path": "InteractionExt.lua"
+    },
+    {
+      "hook_id": "lib/managers/trademanager",
+      "script_path": "TradeManager.lua"
     }
   ],
   "updates": [

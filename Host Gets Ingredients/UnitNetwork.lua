@@ -1,7 +1,7 @@
 local originalSync = UnitNetworkHandler.sync_interacted
 
 function UnitNetworkHandler:sync_interacted(unit, u_id, equipment, status, sender)
-  if not HGI:IsIngredient(equipment, true) then
+  if not HGI:IsIngredient(equipment) then
     originalSync(self, unit, u_id, equipment, status, sender)
     return
   end
