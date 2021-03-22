@@ -5,13 +5,13 @@ function PMHelper:AddOrRemoveSpecial(name, add)
     return end
 
   local updateAmount = function(currentAmount)
-    return add and currentAmount + 1 or math.max(-1, currentAmount - 1)
+    return add and currentAmount + 1 or math.max(0, currentAmount - 1)
   end
 
   local selfKeyword = managers.player
   local syncedEquips = selfKeyword:get_synced_equipment_possession(1)
 
-  local amount = 0
+  local amount = -1
   if syncedEquips and syncedEquips[name] then
     amount = updateAmount(syncedEquips[name])
   end
@@ -25,9 +25,7 @@ function PMHelper:AddOrRemoveSpecial(name, add)
 
     self._equipment.specials[name] = nil
     return
-  end
-
-  if amount == 0 and add then
+  elseif amount == -1 and add then
     amount = 1
 
     managers.hud:add_special_equipment(
