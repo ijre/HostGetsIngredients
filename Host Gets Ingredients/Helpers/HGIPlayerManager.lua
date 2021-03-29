@@ -1,6 +1,6 @@
 local PMHelper = { }
 
-function PMHelper:AddOrRemoveSpecial(name, add)
+function PMHelper:AddOrRemoveSpecial(Self, name, add)
   if add == nil then
     return end
 
@@ -8,8 +8,7 @@ function PMHelper:AddOrRemoveSpecial(name, add)
     return add and currentAmount + 1 or math.max(0, currentAmount - 1)
   end
 
-  local selfKeyword = managers.player
-  local syncedEquips = selfKeyword:get_synced_equipment_possession(1)
+  local syncedEquips = Self:get_synced_equipment_possession(1)
 
   local amount = -1
   if syncedEquips and syncedEquips[name] then
@@ -20,10 +19,10 @@ function PMHelper:AddOrRemoveSpecial(name, add)
 
   if amount == 0 and not add then
     managers.hud:remove_special_equipment(name)
-    self:remove_equipment_possession(1, name)
+    Self:remove_equipment_possession(1, name)
     managers.network:session():send_to_peers_synched("sync_remove_equipment_possession", 1, name)
 
-    self._equipment.specials[name] = nil
+    Self._equipment.specials[name] = nil
     return
   elseif amount == -1 and add then
     amount = 1
@@ -38,9 +37,9 @@ function PMHelper:AddOrRemoveSpecial(name, add)
     managers.hud:set_special_equipment_amount(name, amount)
   end
 
-  selfKeyword:update_equipment_possession_to_peers(name, amount)
+  Self:update_equipment_possession_to_peers(name, amount)
 
-  selfKeyword._equipment.specials[name] =
+  Self._equipment.specials[name] =
   {
     amount = amount
   }

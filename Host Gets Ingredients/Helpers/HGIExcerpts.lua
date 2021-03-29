@@ -2,9 +2,7 @@
 
 local Excerpts = { }
 
-function Excerpts:transfer_special_equipment(name, amount, p)
-  local selfKeyword = managers.player
-
+function Excerpts:transfer_special_equipment(Self, name, amount, p)
   local equipment_data = tweak_data.equipments.specials[name]
 
   if equipment_data and not equipment_data.avoid_tranfer then
@@ -13,7 +11,7 @@ function Excerpts:transfer_special_equipment(name, amount, p)
     local max_amount = equipment_data.transfer_quantity or 1
 
     local id = p:id()
-    local peer_amount = selfKeyword._global.synced_equipment_possession[id] and selfKeyword._global.synced_equipment_possession[id][name] or 0
+    local peer_amount = Self._global.synced_equipment_possession[id] and Self._global.synced_equipment_possession[id][name] or 0
 
     if max_amount > peer_amount then
       local transfer_amount = math.min(amount_to_transfer, max_amount - peer_amount)
@@ -22,7 +20,7 @@ function Excerpts:transfer_special_equipment(name, amount, p)
       p:send("give_equipment", name, transfer_amount, true)
 
       for i = 1, transfer_amount do
-        selfKeyword:remove_special(name)
+        Self:remove_special(name)
       end
 
       if amount_to_transfer == 0 then
