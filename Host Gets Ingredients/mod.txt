@@ -1,6 +1,6 @@
 {
   "name": "Host Gets Ingredients",
-  "description": "Only the host gets meth ingredients",
+  "description": "Forces all meth ingredients into the host's inventory instead",
   "author": "ijre",
   "hooks": [
     {
