@@ -1,17 +1,41 @@
 HGI = { }
 HGIHelpers = { }
 
+HGI.CustodyPeer = { }
+
 HGI.Ingredients =
 {
   "muriatic_acid",
   "acid",
-  "hydrogen_chloride",
-  "caustic_soda"
+  "caustic_soda",
+  "hydrogen_chloride"
 }
-HGI.CustodyPeer = { }
+
+HGI.LabEquipment =
+{
+  "methlab_bubbling",
+  "methlab_caustic_cooler",
+  "methlab_gas_to_salt"
+}
 
 function HGI:IsIngredient(ingred)
   return table.contains(self.Ingredients, ingred) and LuaNetworking:IsHost()
+end
+
+function HGI:IsLabEquipment(labEquip)
+  if not LuaNetworking:IsHost() then
+    return nil
+  end
+
+  local equip = table.index_of(self.Ingredients, tweak_data.interaction[labEquip].special_equipment)
+
+  if equip ~= -1 then
+    equip = self.LabEquipment[equip - 1]
+  else
+    equip = nil
+  end
+
+  return equip
 end
 
 dofile(ModPath .. "Helpers/HGIHelpersInit.lua")
