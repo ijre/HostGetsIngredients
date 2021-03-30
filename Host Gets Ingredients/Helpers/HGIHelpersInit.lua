@@ -4,3 +4,4 @@ end
 
 HelpersInit("HGIExcerpts")
 HelpersInit("HGIPlayerManager")
+HelpersInit("HGIUtils")
