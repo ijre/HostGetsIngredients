@@ -27,7 +27,7 @@ function PlayerManager:add_special(params)
 end
 
 function PlayerManager:remove_special(name)
-  if not HGI:IsIngredient(name) or not HGI.CustodyPeer then
+  if not HGI:IsIngredient(name) or table.empty(HGI.CustodyPeer) then
     originalRemoveSpec(self, name)
     return
   end
