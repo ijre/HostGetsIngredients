@@ -27,7 +27,7 @@ function PlayerManager:add_special(params)
 end
 
 function PlayerManager:remove_special(name)
-  if not HGI:IsIngredient(name) or not HGI.custodyOverride then
+  if not HGI:IsIngredient(name) or not HGI.CustodyPeer then
     originalRemoveSpec(self, name)
     return
   end
@@ -55,25 +55,25 @@ function PlayerManager:transfer_special_equipment(peerID, custody)
 
   for _, peer in pairs(managers.network:session():peers()) do
     if not managers.trade:is_peer_in_custody(peer:id()) then
-      HGI.custodyOverride = peer
+      HGI.CustodyPeer = peer
       break
     end
   end
 
-  if earlyReturn(table.empty(HGI.custodyOverride)) then
+  if earlyReturn(table.empty(HGI.CustodyPeer)) then
     return
   end
 
   for name, amount in pairs(self._global.synced_equipment_possession[1]) do
-    local newPeerInv = self:get_synced_equipment_possession(HGI.custodyOverride:id()) or { }
+    local newPeerInv = self:get_synced_equipment_possession(HGI.CustodyPeer:id()) or { }
 
     if HGI:IsIngredient(name) then
       if not table.contains(newPeerInv, name) then
-        HGI.custodyOverride:send("give_equipment", name, 1, false)
+        HGI.CustodyPeer:send("give_equipment", name, 1, false)
         self:remove_special(name)
       end
     else
-      HGIHelpers.Excerpts:transfer_special_equipment(self, name, amount, HGI.custodyOverride)
+      HGIHelpers.Excerpts:transfer_special_equipment(self, name, amount, HGI.CustodyPeer)
     end
   end
 end
