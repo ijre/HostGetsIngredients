@@ -1,5 +1,5 @@
 local HelpersInit = function(file)
-  dofile(string.format("%sHelpers/%s.lua", ModPath, file))
+  dofile(string.format("%sHelpers/%s.lua", HGI.Path, file))
 end
 
 HelpersInit("HGIExcerpts")

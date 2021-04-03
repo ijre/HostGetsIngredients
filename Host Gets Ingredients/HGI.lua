@@ -1,6 +1,8 @@
 HGI = { }
 HGIHelpers = { }
 
+HGI.Path = ModPath
+
 HGI.CustodyPeer = { }
 
 HGI.Ingredients =
@@ -38,4 +40,4 @@ function HGI:IsLabEquipment(labEquip)
   return equip
 end
 
-dofile(ModPath .. "Helpers/HGIHelpersInit.lua")
+dofile(HGI.Path .. "Helpers/HGIHelpersInit.lua")
