@@ -2,6 +2,7 @@ HGI = { }
 HGIHelpers = { }
 
 HGI.Path = ModPath
+-- HGI.Path = ModPath .. "Host Gets Ingredients/"
 
 HGI.CustodyPeer = { }
 
@@ -25,7 +26,7 @@ function HGI:IsIngredient(ingred)
 end
 
 function HGI:IsLabEquipment(labEquip)
-  if not LuaNetworking:IsHost() then
+  if not LuaNetworking:IsHost() or tweak_data.interaction[labEquip] == nil then
     return nil
   end
 
