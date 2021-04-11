@@ -10,12 +10,20 @@ function BaseInteractionExt:can_select(player)
 end
 
 function UseInteractionExt:interact(player)
+  local isIngred = false
+
   if self._tweak_data.equipment_consume and HGI:IsIngredient(self._tweak_data.special_equipment) then
-    HGIHelpers.PM:AddOrRemoveSpecial(managers.player, self._tweak_data.special_equipment, false)
+    HGIHelpers.PM:AddOrRemoveSpecial(self._tweak_data.special_equipment, false)
 
     self._tweak_data.equipment_consume = nil
-    self._tweak_data.special_equipment = nil
+    isIngred = true
   end
 
-  return originalInteracted(self, player)
+  local result = originalInteracted(self, player)
+
+  if isIngred then
+    self._tweak_data.equipment_consume = true
+  end
+
+  return result
 end
