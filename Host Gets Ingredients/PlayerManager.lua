@@ -11,7 +11,7 @@ function PlayerManager:add_special(params)
   local name = params.name
   local equip = tweak_data.equipments.specials[name]
 
-  HGIHelpers.PM:AddOrRemoveSpecial(self, name, true)
+  HGIHelpers.PM:AddOrRemoveSpecial(name, true)
 
   local text = managers.localization:text(equip.text_id)
   local title = managers.localization:text("present_obtained_mission_equipment_title")
@@ -32,7 +32,7 @@ function PlayerManager:remove_special(name)
     return
   end
 
-  HGIHelpers.PM:AddOrRemoveSpecial(self, name, false)
+  HGIHelpers.PM:AddOrRemoveSpecial(name, false)
 end
 
 function PlayerManager:transfer_special_equipment(peerID, custody)
