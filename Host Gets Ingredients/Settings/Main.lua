@@ -1,19 +1,13 @@
 HGI = HGI or { }
 HGI.Settings = HGI.Settings or { }
 
-local base = ModPath
--- local base = ModPath .. "Host Gets Ingredients/"
-HGI.Settings.Paths =
-{
-  Settings = base .. "Settings/"
-}
+HGI.Settings.Path = HGI.Path .. "Settings/"
+local savePath = SavePath .. "HGI.txt"
 
 HGI.Settings.SavedData =
 {
   Infinite = false
 }
-
-local savePath = SavePath .. "HGI.txt"
 
 function HGI.Settings:Load()
   local file = io.open(savePath, "r")
@@ -43,9 +37,9 @@ Hooks:Add("MenuManagerInitialize", "HGI_Menu", function(MM)
   end
 
   HGI.Settings:Load()
-  MenuHelper:LoadFromJsonFile(HGI.Settings.Paths.Settings .. "menu.txt", HGI.Settings, HGI.Settings.SavedData)
+  MenuHelper:LoadFromJsonFile(HGI.Settings.Path .. "menu.txt", HGI.Settings, HGI.Settings.SavedData)
 end)
 
 Hooks:Add("LocalizationManagerPostInit", "HGI_LocalizeInit", function(LM)
-  LM:load_localization_file(HGI.Settings.Paths.Settings .. "en.txt")
+  LM:load_localization_file(HGI.Settings.Path .. "en.txt")
 end)
