@@ -1,0 +1,5 @@
+{
+  "HGI_Title":      "Host Gets Ingredients",
+  "HGI_Inf_Title":  "Infinite Ingredients",
+  "HGI_Inf_Desc":   "If enabled, cooking will never use your ingredients.\nAs a wise lynx once asked me; \"Do you work for Bethesda?\""
+}

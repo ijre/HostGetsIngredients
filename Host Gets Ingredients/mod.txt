@@ -8,6 +8,10 @@
       "script_path": "HGI.lua"
     },
     {
+      "hook_id": "lib/managers/menumanager",
+      "script_path": "Settings/Main.lua"
+    },
+    {
       "hook_id": "lib/network/handlers/unitnetworkhandler",
       "script_path": "UnitNetwork.lua"
     },

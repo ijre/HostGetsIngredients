@@ -1,0 +1,16 @@
+{
+  "menu_id":        "HGI",
+  "parent_menu_id": "blt_options",
+  "title":          "HGI_Title",
+  "items":
+  [
+    {
+      "type":         "toggle",
+      "id":           "HGI_Inf",
+      "title":        "HGI_Inf_Title",
+      "description":  "HGI_Inf_Desc",
+      "callback":     "HGI_OnInf",
+      "value":        "Infinite"
+    }
+  ]
+}

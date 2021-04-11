@@ -13,7 +13,9 @@ function UseInteractionExt:interact(player)
   local isIngred = false
 
   if self._tweak_data.equipment_consume and HGI:IsIngredient(self._tweak_data.special_equipment) then
-    HGIHelpers.PM:AddOrRemoveSpecial(self._tweak_data.special_equipment, false)
+    if not HGI.Settings.SavedData.Infinite then
+      HGIHelpers.PM:AddOrRemoveSpecial(self._tweak_data.special_equipment, false)
+    end
 
     self._tweak_data.equipment_consume = nil
     isIngred = true
