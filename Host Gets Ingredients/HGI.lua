@@ -21,12 +21,16 @@ HGI.LabEquipment =
   "methlab_gas_to_salt"
 }
 
-function HGI:IsIngredient(ingred)
-  return table.contains(self.Ingredients, ingred) and LuaNetworking:IsHost()
+function HGI:IsIngredient(ingred, checkHost)
+  if checkHost == nil then
+    checkHost = true
+  end
+
+  return table.contains(self.Ingredients, ingred) and (LuaNetworking:IsHost() or not checkHost)
 end
 
 function HGI:IsLabEquipment(labEquip)
-  if not LuaNetworking:IsHost() or tweak_data.interaction[labEquip] == nil then
+  if not LuaNetworking:IsHost() or not tweak_data.interaction[labEquip] then
     return nil
   end
 
