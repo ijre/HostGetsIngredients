@@ -1,8 +1,19 @@
 HGI = { }
 HGIHelpers = { }
+local MPath = ModPath
 
-HGI.Path = ModPath
--- HGI.Path = ModPath .. "Host Gets Ingredients/"
+local function ShortPath()
+  local file = io.open(MPath .. ".gitignore", "r")
+
+  if file then
+    file:close()
+    return MPath .. "Host Gets Ingredients/"
+  else
+    return MPath
+  end
+end
+
+HGI.Path = ShortPath()
 
 HGI.CustodyPeer = { }
 
