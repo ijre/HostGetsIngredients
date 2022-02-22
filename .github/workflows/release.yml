@@ -2,9 +2,8 @@
 name: Create PAYDAY mod release
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    branches: [ main ]
+
 jobs:
   build:
     runs-on: windows-latest
