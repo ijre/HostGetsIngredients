@@ -1,5 +1,5 @@
 
-name: Create PAYDAY mod release
+name: Create Updated Release
 on:
   push:
     branches: [ main ]
